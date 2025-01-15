@@ -3,17 +3,22 @@ import java.util.Arrays;
 import static java.lang.Math.abs;
 
 public class five {
-    public static int  diff(int[] b, int k){
+    public static int  diff(int b[], int k){
         Arrays.sort(b);
-//as we know that the after and before the maximum and the minimum number of the array is still and the diiffernce between these two is also same so uh
-        // not need to add nd then subtract
-        // we just simply return the difference between first nd the last element after sort the array
-    return abs(b[0]-b[b.length-1]);
+        int n=b.length;
+int res=b[n-1]-b[0];
+for(int i=1;i<n;i++) {
+    int maxh1 = Math.max(b[i - 1] + k, b[n - 1] - k);
+    int minh1 = Math.min(b[i] - k, b[0] + k);
+
+    res=Math.min(res,(maxh1 - minh1));
+}
+return res;
     }
     public static void main(String[] args) {
 
-        int a[]={1,3,4,5,6,7,9};
-        int k=3;
+        int a[]={12,6,4,15,17,10};
+        int k=6;
         System.out.println(diff(a,k));
     }
 }
